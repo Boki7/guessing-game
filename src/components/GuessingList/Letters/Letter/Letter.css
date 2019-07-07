@@ -1,0 +1,15 @@
+.letter-list-letter {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-list-letter-correct {
+  color: green;
+}
+
+.letter-list-letter-wrong {
+  color: red;
+}

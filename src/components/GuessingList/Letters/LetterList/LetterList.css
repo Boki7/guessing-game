@@ -1,0 +1,12 @@
+.letter-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.letter-list-letter-correct {
+  color: green;
+}
+
+.letter-list-letter-wrong {
+  color: red;
+}
