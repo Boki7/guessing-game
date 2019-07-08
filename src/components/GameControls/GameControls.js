@@ -12,14 +12,14 @@ import {
 } from "../../store/actions/index";
 
 import "./GameControls.css";
-let timer;
 
 const GameControls = ({
   isPlaying,
   gameStatus,
   resetGame,
   inputValue,
-  checkAnswer
+  checkAnswer,
+  value
 }) => {
   const renderButton = () => {
     if (isPlaying) {
@@ -38,15 +38,16 @@ const GameControls = ({
     <div className="game-controls">
       <DifficultList />
       {renderButton()}
-      {isPlaying ? <RandomNumber /> : null}
-      <Input type="text" disabled={!isPlaying} onChange={handleOnChange} />
+      {isPlaying ? <RandomNumber /> : <h1>0</h1>}
+      <Input type="text" disabled={!isPlaying} onChange={handleOnChange} value={value}/>
     </div>
   );
 };
 
 const mapStateToProps = state => {
   return {
-    isPlaying: state.isPlaying
+    isPlaying: state.isPlaying,
+    value: state.inputValue
   };
 };
 

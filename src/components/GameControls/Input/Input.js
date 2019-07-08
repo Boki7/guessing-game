@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ type, classes, onChange, disabled }) => {
+const Input = ({ type, classes, onChange, disabled, value }) => {
   return (
     <input
       type={type}
@@ -8,6 +8,7 @@ const Input = ({ type, classes, onChange, disabled }) => {
       onChange={onChange}
       disabled={disabled}
       maxLength={1}
+      value={value}
     />
   );
 };

@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { myInt } from "../../../store/actions/index";
+import { myInt, checkAnswerAuto } from "../../../store/actions/index";
 
 class RandomNumber extends Component {
   state = {
-    intervalId: ""
+    intervalId: "",
+    intervalCheckId: ''
   };
 
   componentDidMount() {
     const intervalId = setInterval(this.props.myInt, this.props.timeout);
-    this.setState({ intervalId: intervalId });
+    const intervalCheckId = setInterval(this.props.checkAnswerAuto, this.props.timeout)
+    this.setState({ intervalId: intervalId, intervalCheckId: intervalCheckId });
   }
 
   componentWillUnmount() {
     clearInterval(this.state.intervalId);
+    clearInterval(this.state.intervalCheckId);
   }
 
   render() {
@@ -35,6 +38,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    myInt
+    myInt,
+    checkAnswerAuto
   }
 )(RandomNumber);

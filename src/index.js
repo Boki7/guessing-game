@@ -6,7 +6,7 @@ import { createStore, compose } from "redux";
 import reducers from "./store/reducers/index";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducers, composeEnhancers());
+export const store = createStore(reducers, composeEnhancers());
 
 ReactDOM.render(
   <Provider store={store}>

@@ -5,5 +5,6 @@ export {
   resetGame,
   inputValue,
   correctAnswer,
-  checkAnswer
+  checkAnswer,
+  checkAnswerAuto
 } from "./controlsActions";

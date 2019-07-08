@@ -1,3 +1,5 @@
+import {store} from '../../index';
+
 export const changeDifficult = difficult => {
   return {
     type: "CHANGE_DIFFICULT",
@@ -35,10 +37,22 @@ export const resetGame = () => {
 };
 
 export const checkAnswer = () => {
+  const inputValue = store.getState().inputValue;
   return {
-    type: "CHECK_ANSWER"
+    type: "CHECK_ANSWER",
+    payload: inputValue
   };
 };
+
+export const checkAnswerAuto = () => {
+  const inputValue = store.getState().inputValue;
+  return {
+    type: "CHECK_ANSWER_AUTO",
+    payload: inputValue
+  };
+};
+
+
 
 export const inputValue = value => {
   return {

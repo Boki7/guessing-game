@@ -4,6 +4,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .letter-list-letter-correct {

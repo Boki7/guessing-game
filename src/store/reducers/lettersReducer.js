@@ -40,27 +40,46 @@ export default (state = initialState, action) => {
           return letter.number === action.payload.randomNumber;
         })
       };
+    case "RESET_GAME":
+      return initialState;
+
+
     case "INPUT_VALUE":
       return {
         ...state,
-        answer: Object.values(state.letters).filter(letter => {
-          return letter.letter === action.payload;
-        })
+        answer: action.payload
       };
+
+    case "CHECK_ANSWER_AUTO":
+      if(action.payload.length === 0){
+        return {
+          ...state,
+          letters: {
+            ...state.letters,
+            [state.pickedLetter[0].number]: {
+              ...state.letters[state.pickedLetter[0].number],
+              correct: "wrong"
+            }
+          }
+        };
+      }
+      return state;
+
+      
     case "CHECK_ANSWER":
-      if (state.pickedLetter[0] && state.answer[0]) {
-        if (state.pickedLetter[0].letter === state.answer[0].letter) {
+      if (state.pickedLetter[0] && state.answer) {
+        if (state.pickedLetter[0].letter === state.answer) {
           return {
             ...state,
             letters: {
               ...state.letters,
-              [state.answer[0].number]: {
-                ...state.letters[state.answer[0].number],
+              [state.pickedLetter[0].number]: {
+                ...state.letters[state.pickedLetter[0].number],
                 correct: "correct"
               }
             }
           };
-        } else {
+        } else if (action.payload.length > 0) {
           return {
             ...state,
             letters: {
@@ -73,6 +92,7 @@ export default (state = initialState, action) => {
           };
         }
       }
+      return state;
 
     default:
       return state;
