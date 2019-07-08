@@ -9,14 +9,17 @@ class RandomNumber extends Component {
   };
 
   componentDidMount() {
-    const intervalId = setInterval(this.props.myInt, this.props.timeout);
-    const intervalCheckId = setInterval(this.props.checkAnswerAuto, this.props.timeout)
-    this.setState({ intervalId: intervalId, intervalCheckId: intervalCheckId });
+    const intervalId = setInterval(() => {
+      this.props.myInt()
+      setTimeout(() => {
+        this.props.checkAnswerAuto()
+      }, this.props.timeout - 300)
+    }, this.props.timeout);
+    this.setState({ intervalId: intervalId });
   }
 
   componentWillUnmount() {
     clearInterval(this.state.intervalId);
-    clearInterval(this.state.intervalCheckId);
   }
 
   render() {
