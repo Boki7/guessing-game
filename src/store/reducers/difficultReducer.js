@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
           return {
             ...state,
             difficult: action.payload,
-            timeout: 2000
+            timeout: 200
           };
         case "medium":
           return {

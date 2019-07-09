@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { myInt, checkAnswerAuto } from "../../../store/actions/index";
+import {
+  myInt,
+  checkAnswerAuto,
+  generateRandomNumbers
+} from "../../../store/actions/index";
 
 class RandomNumber extends Component {
   state = {
-    intervalId: "",
-    intervalCheckId: ''
+    intervalId: ""
   };
 
   componentDidMount() {
+    this.props.generateRandomNumbers(this.randomNumbersArray());
     const intervalId = setInterval(() => {
-      this.props.myInt()
+      this.props.myInt();
       setTimeout(() => {
-        this.props.checkAnswerAuto()
-      }, this.props.timeout - 300)
+        this.props.checkAnswerAuto();
+      }, this.props.timeout - 300);
     }, this.props.timeout);
     this.setState({ intervalId: intervalId });
   }
@@ -21,6 +25,17 @@ class RandomNumber extends Component {
   componentWillUnmount() {
     clearInterval(this.state.intervalId);
   }
+
+  randomNumbersArray = () => {
+    const randomNumbers = [];
+    while (randomNumbers.length < 26) {
+      var random = Math.floor(Math.random() * 26 + 1);
+      if (randomNumbers.indexOf(random) === -1) {
+        randomNumbers.push(random);
+      }
+    }
+    return randomNumbers;
+  };
 
   render() {
     return (
@@ -33,7 +48,7 @@ class RandomNumber extends Component {
 
 const mapStateToProps = state => {
   return {
-    randomNumber: state.randomNumber,
+    randomNumber: state.randomNumber.randomNumber,
     timeout: state.difficult.timeout
   };
 };
@@ -42,6 +57,7 @@ export default connect(
   mapStateToProps,
   {
     myInt,
-    checkAnswerAuto
+    checkAnswerAuto,
+    generateRandomNumbers
   }
 )(RandomNumber);

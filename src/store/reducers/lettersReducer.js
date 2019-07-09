@@ -43,7 +43,6 @@ export default (state = initialState, action) => {
     case "RESET_GAME":
       return initialState;
 
-
     case "INPUT_VALUE":
       return {
         ...state,
@@ -51,7 +50,7 @@ export default (state = initialState, action) => {
       };
 
     case "CHECK_ANSWER_AUTO":
-      if(action.payload.length === 0){
+      if (action.payload.length === 0 && state.pickedLetter[0]) {
         return {
           ...state,
           letters: {
@@ -65,7 +64,6 @@ export default (state = initialState, action) => {
       }
       return state;
 
-      
     case "CHECK_ANSWER":
       if (state.pickedLetter[0] && state.answer) {
         if (state.pickedLetter[0].letter === state.answer) {

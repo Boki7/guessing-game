@@ -6,5 +6,6 @@ export {
   inputValue,
   correctAnswer,
   checkAnswer,
-  checkAnswerAuto
+  checkAnswerAuto,
+  generateRandomNumbers
 } from "./controlsActions";

@@ -1,11 +1,23 @@
-const initialState = "";
+const initialState = {
+  randomNumber: "",
+  randomNumbers: []
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "MY_INT":
-      return action.payload.randomNumber;
+      return {
+        ...state,
+        randomNumber: action.payload.randomNumber,
+        randomNumbers: action.payload.randomNumbers
+      };
     case "RESET_GAME":
-      return action.payload.randomNumber;
+      return initialState;
+    case "GENERATE_RANDOM_NUMBERS":
+      return {
+        ...state,
+        randomNumbers: action.payload
+      };
     default:
       return state;
   }

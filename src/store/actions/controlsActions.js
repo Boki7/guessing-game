@@ -1,4 +1,4 @@
-import {store} from '../../index';
+import { store } from "../../index";
 
 export const changeDifficult = difficult => {
   return {
@@ -14,15 +14,21 @@ export const gameStatus = isPlaying => {
   };
 };
 
-const randomNumber = () => {
-  return Math.floor(Math.random() * 26 + 1);
+export const generateRandomNumbers = numbersArray => {
+  return {
+    type: "GENERATE_RANDOM_NUMBERS",
+    payload: numbersArray
+  };
 };
 
 export const myInt = () => {
+  const randomNumbers = store.getState().randomNumber.randomNumbers;
+  const randomNumber = randomNumbers.splice(0, 1)[0];
   return {
     type: "MY_INT",
     payload: {
-      randomNumber: randomNumber()
+      randomNumber,
+      randomNumbers
     }
   };
 };
@@ -51,8 +57,6 @@ export const checkAnswerAuto = () => {
     payload: inputValue
   };
 };
-
-
 
 export const inputValue = value => {
   return {
