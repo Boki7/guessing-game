@@ -46,7 +46,7 @@ const GameControls = ({
 
 const mapStateToProps = state => {
   return {
-    isPlaying: state.isPlaying,
+    isPlaying: state.isPlaying.isPlaying,
     value: state.inputValue
   };
 };

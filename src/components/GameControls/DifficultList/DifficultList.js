@@ -37,7 +37,7 @@ const DifficultList = ({ changeDifficult, isPlaying, difficult }) => {
 
 const mapStateToProps = state => {
   return {
-    isPlaying: state.isPlaying,
+    isPlaying: state.isPlaying.isPlaying,
     difficult: state.difficult.difficult
   };
 };

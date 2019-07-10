@@ -28,7 +28,8 @@ const initialState = {
     26: { letter: "z", number: 26, correct: "none" }
   },
   pickedLetter: "",
-  answer: ""
+  answer: "",
+  left: 26
 };
 
 export default (state = initialState, action) => {
@@ -38,7 +39,8 @@ export default (state = initialState, action) => {
         ...state,
         pickedLetter: Object.values(state.letters).filter(letter => {
           return letter.number === action.payload.randomNumber;
-        })
+        }),
+        left: state.left - 1
       };
     case "RESET_GAME":
       return initialState;

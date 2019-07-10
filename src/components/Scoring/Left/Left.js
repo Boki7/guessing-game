@@ -1,7 +1,14 @@
 import React from "react";
+import {connect} from 'react-redux'
 
-const Left = () => {
-  return <h3>Left: 23</h3>;
+const Left = ({randomNumbers}) => {
+  return <h3>Left: {randomNumbers}</h3>;
 };
 
-export default Left;
+const mapStateToProps = state => {
+  return {
+    randomNumbers: state.randomNumber.randomNumbers.length
+  }
+}
+
+export default connect(mapStateToProps)(Left);

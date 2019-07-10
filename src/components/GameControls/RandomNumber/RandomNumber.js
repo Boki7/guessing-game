@@ -49,7 +49,8 @@ class RandomNumber extends Component {
 const mapStateToProps = state => {
   return {
     randomNumber: state.randomNumber.randomNumber,
-    timeout: state.difficult.timeout
+    timeout: state.difficult.timeout,
+    gameEnd: state.isPlaying.gameEnd
   };
 };
 
@@ -61,3 +62,6 @@ export default connect(
     generateRandomNumbers
   }
 )(RandomNumber);
+
+
+

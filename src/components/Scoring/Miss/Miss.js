@@ -1,7 +1,17 @@
 import React from "react";
+import {connect} from 'react-redux'
 
-const Miss = () => {
-  return <h3>Miss: 5</h3>;
+const Miss = ({lettersCorrect}) => {
+  const correct = lettersCorrect.filter(letter => {
+    return letter.correct === "wrong"
+  })
+  return <h3>Wrong: {correct.length} </h3>;
 };
 
-export default Miss;
+const mapStateToProps = state => {
+  return {
+    lettersCorrect: Object.values(state.letters.letters)
+  }
+}
+
+export default connect(mapStateToProps)(Miss);

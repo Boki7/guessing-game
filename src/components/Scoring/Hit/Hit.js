@@ -1,7 +1,17 @@
 import React from "react";
+import {connect} from 'react-redux'
 
-const Hit = () => {
-  return <h3>Hit: 0</h3>;
+const Hit = ({lettersCorrect}) => {
+  const correct = lettersCorrect.filter(letter => {
+    return letter.correct === "correct"
+  })
+  return <h3>Hit: {correct.length} </h3>;
 };
 
-export default Hit;
+const mapStateToProps = state => {
+  return {
+    lettersCorrect: Object.values(state.letters.letters)
+  }
+}
+
+export default connect(mapStateToProps)(Hit);

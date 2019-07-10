@@ -4,6 +4,7 @@ import App from "./components/App";
 import { Provider } from "react-redux";
 import { createStore, compose } from "redux";
 import reducers from "./store/reducers/index";
+import './styles/global.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(reducers, composeEnhancers());
