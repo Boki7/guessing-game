@@ -6,6 +6,8 @@ export default (state = initialState, action) => {
       return action.payload;
     case "RESET_GAME":
       return initialState;
+    case "CLEAR_INPUT":
+      return initialState;
     default:
       return state;
   }

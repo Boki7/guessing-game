@@ -1,4 +1,5 @@
 import React from "react";
+import "./DifficultItem.css";
 
 const DifficultItem = ({
   name,
@@ -9,7 +10,8 @@ const DifficultItem = ({
   checked
 }) => {
   return (
-    <>
+    <label className="container">
+      {displayName}
       <input
         type="radio"
         name={name}
@@ -18,8 +20,8 @@ const DifficultItem = ({
         disabled={disabled}
         checked={checked}
       />
-      {displayName}
-    </>
+      <span className="checkmark" />
+    </label>
   );
 };
 

@@ -23,10 +23,22 @@ const GameControls = ({
 }) => {
   const renderButton = () => {
     if (isPlaying) {
-      return <Button title="Stop" click={() => gameStatus(false)} />;
+      return (
+        <Button
+          title="Stop"
+          click={() => gameStatus(false)}
+          classes="btn btn-stop"
+        />
+      );
     }
     resetGame();
-    return <Button title="Start Game" click={() => gameStatus(true)} />;
+    return (
+      <Button
+        title="Start Game"
+        click={() => gameStatus(true)}
+        classes="btn btn-start"
+      />
+    );
   };
 
   const handleOnChange = event => {
@@ -38,8 +50,17 @@ const GameControls = ({
     <div className="game-controls">
       <DifficultList />
       {renderButton()}
-      {isPlaying ? <RandomNumber /> : <h1>0</h1>}
-      <Input type="text" disabled={!isPlaying} onChange={handleOnChange} value={value}/>
+      <div className="game-controls-random-number">
+        {isPlaying ? <RandomNumber /> : <h1 className="game-controls-initial-number">0</h1>}
+      </div>
+      <Input
+        type="text"
+        disabled={!isPlaying}
+        onChange={handleOnChange}
+        value={value}
+        attachClass="game-controls-input"
+        placeholder="Input Letter"
+      />
     </div>
   );
 };

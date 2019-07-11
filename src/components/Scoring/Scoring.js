@@ -2,11 +2,12 @@ import React from "react";
 import Hit from "./Hit/Hit";
 import Miss from "./Miss/Miss";
 import Left from "./Left/Left";
+import './Scoring.css';
 
 const Scoring = () => {
   return (
-    <div>
-      <h3>Score</h3>
+    <div className="scoring-container">
+      <h3 className="scoring-container-header">SCORE</h3>
       <Hit />
       <Miss />
       <Left />

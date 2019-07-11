@@ -1,14 +1,16 @@
 import React from "react";
+import './Input.css';
 
-const Input = ({ type, classes, onChange, disabled, value }) => {
+const Input = ({ type, onChange, disabled, value, attachClass, placeholder }) => {
   return (
     <input
       type={type}
-      className={classes}
       onChange={onChange}
       disabled={disabled}
       maxLength={1}
       value={value}
+      className={attachClass}
+      placeholder={placeholder}
     />
   );
 };

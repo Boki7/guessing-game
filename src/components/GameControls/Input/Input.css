@@ -1,0 +1,17 @@
+.game-controls-input {
+    border: 2px solid #c3cfd9;
+    border-radius: 4px;
+    height: 4rem;
+    width: 25rem;
+}
+
+.game-controls-input:disabled {
+    background-color: #ededed;
+}
+
+.game-controls-input::placeholder {
+    color: #c4c4c4;
+    font-size: 1.6rem;
+    padding-left: 1.5rem;
+    font-weight: 100;
+}

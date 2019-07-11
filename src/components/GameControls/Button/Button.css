@@ -1,0 +1,13 @@
+.btn {
+    display: block;
+    border: 2px solid #c7c3fa;
+    margin: 2rem auto;
+    padding: 1rem 3rem;
+    background-color: white;
+    color: #6558f5;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: lighter;
+    width: 15.5rem;
+    cursor: pointer;
+}

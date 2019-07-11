@@ -71,3 +71,9 @@ export const correctAnswer = letter => {
     payload: letter
   };
 };
+
+export const clearInput = () => {
+  return {
+    type: 'CLEAR_INPUT'
+  }
+}

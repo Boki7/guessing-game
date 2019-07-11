@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import {
   myInt,
   checkAnswerAuto,
-  generateRandomNumbers
+  generateRandomNumbers,
+  clearInput
 } from "../../../store/actions/index";
+import './RandomNumber.css';
 
 class RandomNumber extends Component {
   state = {
@@ -17,7 +19,8 @@ class RandomNumber extends Component {
       this.props.myInt();
       setTimeout(() => {
         this.props.checkAnswerAuto();
-      }, this.props.timeout - 300);
+        this.props.clearInput();
+      }, this.props.timeout - 50);
     }, this.props.timeout);
     this.setState({ intervalId: intervalId });
   }
@@ -38,9 +41,12 @@ class RandomNumber extends Component {
   };
 
   render() {
+    if(this.props.gameEnd){
+      clearInterval(this.state.intervalId);
+    }
     return (
       <div>
-        <h1>{this.props.randomNumber}</h1>
+        <h1 className="game-controls-number">{this.props.randomNumber}</h1>
       </div>
     );
   }
@@ -59,7 +65,8 @@ export default connect(
   {
     myInt,
     checkAnswerAuto,
-    generateRandomNumbers
+    generateRandomNumbers,
+    clearInput
   }
 )(RandomNumber);
 
